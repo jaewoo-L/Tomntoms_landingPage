@@ -1,6 +1,9 @@
-body {
+html, body {
 	margin: 0;
 	padding: 0;
+	height: 100%;
+}
+body {
 	color: #707070;
     font-weight: normal;
     font-size: 13px;
@@ -13,6 +16,7 @@ body {
 }
 header {
 	position: fixed;
+	background: white;
 	margin-top: -16px;
 	text-transform: uppercase;
 	height: 130px;
@@ -122,7 +126,79 @@ nav:nth-of-type(2) > ul > li:nth-of-type(3) , nav:nth-of-type(2) > ul > li:nth-o
 
 /*contents*/
 #contents {
-	position: absolute;
+
 }
 
 
+/*footer*/
+#footer {
+	position: absolute;
+	right: 0;
+	left: 0;
+	height: 170px;
+	background: #2c2a29;
+}
+#footer footer{
+	position: relative;
+	width: 100%;
+    min-width: 320px;
+    max-width: 1220px;
+    height: 155px;
+    margin: 0 auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+#footer ul li {
+	display: inline-block;
+
+}
+#footer ul li:after {
+	content: '';
+	margin:0 10px;
+	border-right: 1px solid #dadada;
+}
+#footer ul li:last-of-type:after {
+	content: '';
+	border: none;
+}
+#footer ul li a {
+	font-size: 12px;
+	text-decoration: none;
+	color: #dadada;
+}
+#footer .btn-top {
+	position: absolute;
+	right: 10px;
+    top: -13px;
+}
+#footer .line {
+	margin-top: 18px;
+	height: 1px;
+	background-color: #dadada
+}
+#footer h1 {
+	display: inline-block;
+	position: absolute;
+	background: #2c2a29;
+}
+#footer .addr {
+	margin-left: 70px;
+	margin-top: 25px;
+	font-size: 10px;
+	color: #aaa;
+}
+#footer .addr span:after {
+	content: '';
+	margin: 0 5px;
+	border-right: 1px solid #aaa;
+}
+#footer .addr span:last-of-type:after {
+	content: '';
+	border: none;
+}
+#footer .copyright {
+	margin-left: 70px;
+	font-size: 10px;
+	color: #aaa;
+}

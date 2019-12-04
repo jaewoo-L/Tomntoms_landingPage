@@ -1,5 +1,6 @@
 var $firstMenu = $('nav ul.menu > li'),
-	$header = $('header');
+	$header = $('header'),
+	$top = $('#footer .btn-top');
 
 
 	$firstMenu.mouseover(function() {
@@ -12,3 +13,10 @@ var $firstMenu = $('nav ul.menu > li'),
 			height: '130px'
 		},300)
 	});
+
+	$top.click(function(event) {
+		event.preventDefault();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500);
+    });
