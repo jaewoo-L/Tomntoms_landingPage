@@ -1,0 +1,128 @@
+body {
+	margin: 0;
+	padding: 0;
+	color: #707070;
+    font-weight: normal;
+    font-size: 13px;
+    font-smoothing: antialiased;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+#header {
+	position:relative;
+	height: 130px;
+}
+header {
+	position: fixed;
+	margin-top: -16px;
+	text-transform: uppercase;
+	height: 130px;
+	overflow: hidden;
+	width:100%;
+	z-index: 2;
+}
+header h1 {
+	display: inline-block;
+	position: absolute;
+	left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+}
+ul {
+	list-style: none;
+	padding-left: 0;
+	overflow: hidden;
+}
+/*class util css*/
+header nav:first-of-type{
+	position: absolute;
+	top: 15px;
+	right: 3vw;
+}
+header nav:first-of-type li {
+	float: left;
+	margin-right: 10px;
+}
+header nav:first-of-type li a {
+	font-size: 12px;
+	text-decoration: none;
+	color: #8a8a8a;
+}
+header nav:first-of-type li a:after {
+	content: '';
+	border-right: 1px solid #8a8a8a;
+	padding-left: 10px;
+}
+header nav:first-of-type li:last-of-type a:after {
+	content: '';
+	border: 0px;
+}
+.util .fa, .fas {
+    font-weight: 600;
+    font-size: 12px;
+    padding-right: 6px;
+    color: #8a8a8a;
+}
+.util .select-box {
+	margin-left: -10px;
+	color: #a8a8a8;
+    text-transform: uppercase;
+    font-size: 8px;
+    background: #f9f9f9;
+    padding-top: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+/*.util css end*/
+
+/*.menu css */
+header nav:nth-of-type(2) {
+	width:100%;
+	padding-top: 70px;
+}
+nav:nth-of-type(2) > ul > li {
+	float:left; 
+	background: url('../img/i.png') no-repeat 0% 23%;
+	line-height:25px; 
+	width:15.5%;
+	height: 100%;
+}
+
+nav:nth-of-type(2) > ul > li:nth-of-type(4) {
+	margin-left: 7%;
+}
+nav:nth-of-type(2) > ul.menu > li > a {
+    display: inline-block;
+   	width: 100%;
+	text-align: center;
+	text-decoration: none; 
+	font-size: 20px;
+	font-weight: bold;
+	font-family: NanumGothic;
+	color: #303030;
+
+}
+nav:nth-of-type(2) > ul > li ul{ 
+	width:100%; 
+	height: 100%;
+	display: block; 
+	margin-left: 20%;
+	padding-top: 25px;
+}
+
+nav:nth-of-type(2) > ul > li ul > li a {
+	text-decoration: none;
+	color: #a8a8a8;
+}
+nav:nth-of-type(2) > ul > li:nth-of-type(3) , nav:nth-of-type(2) > ul > li:nth-of-type(6) {
+	background:none;
+}
+.menu {
+	background: url('../img/image.png') no-repeat 51.5% -1%;
+	height: 300px;
+}
+
+/*contents*/
+#contents {
+	position: absolute;
+}
+
+
