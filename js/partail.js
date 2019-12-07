@@ -1,4 +1,5 @@
-var $firstMenu = $('#header nav ul.menu > li'),
+$(function(){
+	var $firstMenu = $('#header nav ul.menu > li'),
 	$header = $('#header'),
 	$firstMenuSelect = $('#header .menu > li > a')
 	$menuSelect = $('#header .menu ul li a'),
@@ -75,3 +76,4 @@ var $mbHeader = $('#mbHeader'),
 			$(event.target).find('img').attr('src','img/close_tap.png')
 		}
 	})
+})
