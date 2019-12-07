@@ -1,9 +1,8 @@
-var $firstMenu = $('nav ul.menu > li'),
-	$header = $('header'),
-	$firstMenuSelect = $('header .menu > li > a')
-	$menuSelect = $('header .menu ul li a'),
+var $firstMenu = $('#header nav ul.menu > li'),
+	$header = $('#header'),
+	$firstMenuSelect = $('#header .menu > li > a')
+	$menuSelect = $('#header .menu ul li a'),
 	$top = $('#footer .btn-top');
-
 
 	$firstMenu.mouseover(function() {
 		$header.stop().animate({
@@ -12,7 +11,7 @@ var $firstMenu = $('nav ul.menu > li'),
 	})
 	.mouseout(function() {
 		$header.stop().animate({
-			height: '130px'
+			height: '136px'
 		},300)
 	});
 
@@ -50,3 +49,30 @@ var $firstMenu = $('nav ul.menu > li'),
     		color: '#303030'
     	})
     })
+
+var $mbHeader = $('#mbHeader'),
+	$mbBtn = $('#mbHeader .util li'),
+	$mbMenu = $('#mbHeader nav'),
+	$mbFirstMenu = $('#mbHeader nav ul.menu > li a'),
+	$mbSecondMenu = $('#mbHeader nav ul.menu > li > ul');
+
+	$mbBtn.click(function() {
+		$mbMenu.toggleClass('active');
+		$mbHeader.toggleClass('active');
+	});
+	$mbFirstMenu.click(function(event) {
+		var sameMenuClick = false;
+		event.preventDefault();
+		if($(event.target).siblings('ul').hasClass('active')) {
+			$(event.target).siblings('ul').removeClass('active');
+			sameMenuClick = true;
+		}
+		$mbSecondMenu.each(function() {
+			$(this).removeClass('active')
+			$mbFirstMenu.find('img').attr('src','img/opne_tap.png')
+		})
+		if(!sameMenuClick){
+			$(event.target).siblings('ul').toggleClass('active');
+			$(event.target).find('img').attr('src','img/close_tap.png')
+		}
+	})

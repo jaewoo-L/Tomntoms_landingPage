@@ -1,24 +1,43 @@
-var mainSliderContainer = document.querySelector('.main_slider_container'), //ul
-	mainSlider = document.getElementsByClassName('main_slider'), //li
+var mainSliderContainer = document.querySelector('.main_slider_container'),
+	mainSlider = document.getElementsByClassName('main_slider'),
 	mainCurrentIdx = 0,
 	mainPagerHTML = '',
+	maxHeight = 0,
 	autoSlide = undefined,
 	mainPager = document.querySelector('.pager');
 
-var newStoreContainer = document.querySelector('.new_store_slider_container'), //ul
-	newStoreSlider = document.getElementsByClassName('new_store_slider'),//li
+var newStoreContainer = document.querySelector('.new_store_slider_container'), 
+	newStoreSlider = document.getElementsByClassName('new_store_slider'),
 	newStoreCurrentIdx = 0,
 	newStorePagerHTML = '',
 	newStoreautoSlide = undefined,
 	newStorePager = document.querySelector('.square-pager');
 
-var mallSliderContainer = document.querySelector('.tomnmall-container'), //ul
-	mallSlider = document.getElementsByClassName('tomnmall-slider'), //li
+var mallSliderContainer = document.querySelector('.tomnmall-container'), 
+	mallSlider = document.getElementsByClassName('tomnmall-slider'), 
 	mallCurrentIdx = 0,
 	mallPagerHTML = '',
 	mallautoSlide = undefined,
 	mallPager = document.querySelector('.mall-pager');
 
+var $mainDiv = $('#main-slider'),
+	$sliderContainer = $('.main_slider_container'),
+	$slider = $('.main_slider');
+
+	function sliderHeight() {
+		var slideHeight = $slider.height()
+		$mainDiv.css({
+			height : slideHeight + 'px'
+		})
+		$sliderContainer.css({
+			height : slideHeight + 'px'
+		})
+	}
+	sliderHeight();
+	$(window).resize(function() { 
+		sliderHeight();
+	});
+	
 	
 	for(var i = 0; i < mainSlider.length; i++) {
 		mainSlider[i].style.left = i*100 + '%';
@@ -42,7 +61,6 @@ var mallSliderContainer = document.querySelector('.tomnmall-container'), //ul
 var mainSliderBtn = document.querySelectorAll('.pager span'); //main btn
 var newStoreBtn = document.querySelectorAll('.square-pager span');
 var mallStoreBtn = document.querySelectorAll('.mall-pager span');
-console.log(mallStoreBtn);
 
 	function goToSlide(idx) {
 		mainSliderContainer.classList.add('animated');
@@ -98,7 +116,6 @@ console.log(mallStoreBtn);
 	function startAutoMallSlide() {
 		mallautoSlide = setInterval(function() {
 			var nextIdx = (mallCurrentIdx + 1) % mallStoreBtn.length;
-			console.log(nextIdx);
 			mallStoreSlide(nextIdx);
 		},4000);
 	}
