@@ -3,6 +3,11 @@ var $firstMenu = $('#header nav ul.menu > li'),
 	$firstMenuSelect = $('#header .menu > li > a')
 	$menuSelect = $('#header .menu ul li a'),
 	$top = $('#footer .btn-top');
+var $mbHeader = $('#mbHeader'),
+	$mbBtn = $('#mbHeader .util li'),
+	$mbMenu = $('#mbHeader nav'),
+	$mbFirstMenu = $('#mbHeader nav ul.menu > li a'),
+	$mbSecondMenu = $('#mbHeader nav ul.menu > li > ul');
 
 	$firstMenu.mouseover(function() {
 		$header.stop().animate({
@@ -49,13 +54,7 @@ var $firstMenu = $('#header nav ul.menu > li'),
     		color: '#303030'
     	})
     })
-
-var $mbHeader = $('#mbHeader'),
-	$mbBtn = $('#mbHeader .util li'),
-	$mbMenu = $('#mbHeader nav'),
-	$mbFirstMenu = $('#mbHeader nav ul.menu > li a'),
-	$mbSecondMenu = $('#mbHeader nav ul.menu > li > ul');
-
+// mobile
 	$mbBtn.click(function() {
 		$mbMenu.toggleClass('active');
 		$mbHeader.toggleClass('active');
