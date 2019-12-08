@@ -653,7 +653,7 @@ ul {
 		display: block;
 	}
 	#mbHeader h1 a {
-		margin-left: 10px;
+		margin-left: 20px;
 	}
 	#mbHeader h1 img{
 		width:43px;
@@ -661,7 +661,7 @@ ul {
 	#mbHeader .util {
 		display: inline-block;
 	    position: absolute;
-	    right: 10px;
+	    right: 30px;
 	    top: 20px;
 	}
 	#mbHeader .util ul li img {
@@ -722,6 +722,18 @@ ul {
 		width:100%;
 		margin-left: 0;
 	}
+	#section-01 #find-store #search {
+		padding-bottom: 20px;
+	}
+	#section-01 #find-store #new-store #new-store-slider {
+		height: 320px;
+	}
+	#section-01 #quick-menu h3 {
+		text-align: center;
+	}
+	#section-02 {
+		margin-top: 5px;
+	}
 	#section-02 ul li {
 		width:49%;
 	}
@@ -745,6 +757,7 @@ ul {
 		padding-bottom: 30px;
 	}
 	#section-03 #notice {
+		margin-top: 10px;
 		top: -11px;
 		left: 0;
 		width:50%;
