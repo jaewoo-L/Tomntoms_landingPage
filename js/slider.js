@@ -1,3 +1,4 @@
+// main slider 변수
 var mainSliderContainer = document.querySelector('.main_slider_container'),
 	mainSlider = document.getElementsByClassName('main_slider'),
 	mainCurrentIdx = 0,
@@ -5,24 +6,23 @@ var mainSliderContainer = document.querySelector('.main_slider_container'),
 	maxHeight = 0,
 	autoSlide = undefined,
 	mainPager = document.querySelector('.pager');
-
+var $mainDiv = $('#main-slider'),
+	$sliderContainer = $('.main_slider_container'),
+	$slider = $('.main_slider');	
+//new store 변수
 var newStoreContainer = document.querySelector('.new_store_slider_container'), 
 	newStoreSlider = document.getElementsByClassName('new_store_slider'),
 	newStoreCurrentIdx = 0,
 	newStorePagerHTML = '',
 	newStoreautoSlide = undefined,
 	newStorePager = document.querySelector('.square-pager');
-
+//mall 변수
 var mallSliderContainer = document.querySelector('.tomnmall-container'), 
 	mallSlider = document.getElementsByClassName('tomnmall-slider'), 
 	mallCurrentIdx = 0,
 	mallPagerHTML = '',
 	mallautoSlide = undefined,
 	mallPager = document.querySelector('.mall-pager');
-
-var $mainDiv = $('#main-slider'),
-	$sliderContainer = $('.main_slider_container'),
-	$slider = $('.main_slider');
 
 	function sliderHeight() {
 		var slideHeight = $slider.height()
@@ -38,94 +38,84 @@ var $mainDiv = $('#main-slider'),
 		sliderHeight();
 	});
 	
-	
-	for(var i = 0; i < mainSlider.length; i++) {
-		mainSlider[i].style.left = i*100 + '%';
-		mainPagerHTML += "<span>" + i + "</span>"
-		mainPager.innerHTML = mainPagerHTML;
+	function sliderPosition(slider, left) {
+		for(var j = 0; j < slider.length; j++) {
+			slider[j].style.left = j*left + '%';
+		}
 	}
-	for(var j = 0; j < newStoreSlider.length; j++) {
-		newStoreSlider[j].style.left = j*100 + '%';
-		newStorePagerHTML += "<span>" + j + "</span>"
-		newStorePager.innerHTML = newStorePagerHTML;
+	function makeSpan(slider, pagerHTML, pager, show) {
+		for(var i = 0; i < slider.length/show; i++) {
+			pagerHTML += "<span>" + i + "</span>"
+			pager.innerHTML = pagerHTML;
+		}
 	}
-	for(var j = 0; j < mallSlider.length; j++) {
-		mallSlider[j].style.left = j*33.5 + '%';
-	}
-	for(var j = 0; j < mallSlider.length/3; j++) {
-		mallPagerHTML += "<span>" + j + "</span>"
-		mallPager.innerHTML = mallPagerHTML;
-	}
-
+	sliderPosition(mainSlider, 100);
+	makeSpan(mainSlider, mainPagerHTML, mainPager, 1);
+	sliderPosition(newStoreSlider, 100);
+	makeSpan(newStoreSlider, newStorePagerHTML, newStorePager, 1);
+	sliderPosition(mallSlider, 33.5);
+	makeSpan(mallSlider, mallPagerHTML, mallPager, 3);
 
 var mainSliderBtn = document.querySelectorAll('.pager span'); //main btn
 var newStoreBtn = document.querySelectorAll('.square-pager span');
 var mallStoreBtn = document.querySelectorAll('.mall-pager span');
 
-	function goToSlide(idx) {
-		mainSliderContainer.classList.add('animated');
-		for(var j = 0; j < mainSliderBtn.length; j++) {
-			mainSliderBtn[j].classList.remove('active');
+	function goToSlide(container, btn, currentIdx, idx) {
+		container.classList.add('animated');
+		for(var j = 0; j < btn.length; j++) {
+			btn[j].classList.remove('active');
 		}
-		mainSliderBtn[idx].classList.add('active');
-		mainSliderContainer.style.left = idx*(-100) + '%';
-		mainCurrentIdx = idx;		
+		btn[idx].classList.add('active');
+		container.style.left = idx*(-100) + '%';
+		assignIdx(currentIdx, idx);	
 	}
-	function newStoreSlide(idx) {
-		newStoreContainer.classList.add('animated');
-		for(var j = 0; j < newStoreBtn.length; j++) {
-			newStoreBtn[j].classList.remove('active');
+	function assignIdx(currentIdx, idx) {
+		var now = currentIdx;
+		if(now == "mainCurrentIdx") {
+			mainCurrentIdx = idx;
 		}
-		newStoreBtn[idx].classList.add('active');
-		newStoreContainer.style.left = idx*(-100) + '%';
-		newStoreCurrentIdx = idx;
-	}
-	function mallStoreSlide(idx) {
-		mallSliderContainer.classList.add('animated');
-		for(var j = 0; j < mallStoreBtn.length; j++) {
-			mallStoreBtn[j].classList.remove('active');
+		else if(now == "newStoreCurrentIdx") {
+			newStoreCurrentIdx = idx;
 		}
-		mallStoreBtn[idx].classList.add('active');
-		mallSliderContainer.style.left = idx*(-100) + '%';
-		mallCurrentIdx = idx;
+		else if(now == "mallCurrentIdx") {
+			mallCurrentIdx = idx;
+		}
 	}
-
-	goToSlide(0);
-	newStoreSlide(0);
-	mallStoreSlide(0);
-
+	goToSlide(mainSliderContainer, mainSliderBtn, 'mainCurrentIdx', 0);
+	goToSlide(newStoreContainer, newStoreBtn, 'newStoreCurrentIdx', 0);
+	goToSlide(mallSliderContainer, mallStoreBtn, 'mallCurrentIdx', 0);
+	
 	function startAutoSlide() {
 		autoSlide = setInterval(function() {
 			var nextIdx = (mainCurrentIdx + 1) % mainSlider.length;
-			goToSlide(nextIdx);
+			goToSlide(mainSliderContainer, mainSliderBtn, 'mainCurrentIdx', nextIdx);
 		},4000);
-	}
-	
+	};
 	function stopAutoSlide() {
 		clearInterval(autoSlide);
-	}
+	};
 	function startAutoNewStoreSlide() {
 		newStoreautoSlide = setInterval(function() {	
 			var nextIdx = (newStoreCurrentIdx + 1) % newStoreBtn.length;
-			newStoreSlide(nextIdx);
+			goToSlide(newStoreContainer, newStoreBtn, 'newStoreCurrentIdx', nextIdx);
 		},4000);
-	}
+	};
 	function stopAutoNewStoreSlide() {
 		clearInterval(newStoreautoSlide);
-	}
+	};
 	function startAutoMallSlide() {
 		mallautoSlide = setInterval(function() {
 			var nextIdx = (mallCurrentIdx + 1) % mallStoreBtn.length;
-			mallStoreSlide(nextIdx);
+			goToSlide(mallSliderContainer, mallStoreBtn, 'mallCurrentIdx', nextIdx);
 		},4000);
-	}
+	};
 	function stopAutoMallSlide() {
 		clearInterval(mallautoSlide);
-	}
+	};
+
 	startAutoSlide();
 	startAutoNewStoreSlide();
 	startAutoMallSlide();
-
 
 	mainSliderContainer.addEventListener('mouseenter', function() {
 		stopAutoSlide();
@@ -146,22 +136,15 @@ var mallStoreBtn = document.querySelectorAll('.mall-pager span');
 		startAutoMallSlide();		
 	});
 
-	for(var i = 0 ; i < mainSliderBtn.length; i++) {
-		mainSliderBtn[i].addEventListener('click', function(event) {
-			var pageNum = event.target.innerText;
-			goToSlide(pageNum);
-		});
+	function btnAddEvent(sliderBtn, sliderContainer, currentIdx) {
+		for(var i = 0 ; i < sliderBtn.length; i++) {
+			sliderBtn[i].addEventListener('click', function(event) {
+				var pageNum = event.target.innerText;
+				console.log(pageNum);
+				goToSlide(sliderContainer, sliderBtn, currentIdx, pageNum);
+			});
+		}
 	}
-	for(var i = 0 ; i < newStoreBtn.length; i++) {
-		newStoreBtn[i].addEventListener('click', function(event) {
-			var pageNum1 = event.target.innerText;
-			newStoreSlide(pageNum1);
-		});
-	}
-	for(var i = 0 ; i < mallStoreBtn.length; i++) {
-		mallStoreBtn[i].addEventListener('click', function(event) {
-			var pageNum = event.target.innerText;
-			mallStoreSlide(pageNum);
-		});
-	}
-
+	btnAddEvent(mainSliderBtn, mainSliderContainer, 'mainCurrentIdx');
+	btnAddEvent(newStoreBtn, newStoreContainer, 'newStoreCurrentIdx');
+	btnAddEvent(mallStoreBtn, mallSliderContainer, 'mallCurrentIdx');
