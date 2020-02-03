@@ -14,6 +14,18 @@ ul {
 	list-style: none;
 	padding-left: 0;
 }
+select {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('../img/icon_down_more.png') no-repeat 120% 50% !important;
+    width: 85px;
+    padding: 0 5px;
+    height: 20px;
+}
+select::-ms-expand {
+    display: none;
+}
 #wrapper {
 	position: relative;
 	min-height: 100%;
@@ -40,6 +52,7 @@ ul {
 	left: 50%;
     top: 10px;
     transform: translateX(-50%);
+    z-index: 100;
 }
 #header ul {
 	overflow: hidden;
@@ -81,17 +94,19 @@ ul {
 	margin-left: -10px;
 	color: #a8a8a8;
     text-transform: uppercase;
-    font-size: 8px;
+    font-size: 10px;
     background: #f9f9f9;
-    padding-top: 4px;
     border: 1px solid rgba(0, 0, 0, 0.15);
 }
 /*.util css end*/
 
 /*.menu css */
 #header nav:nth-of-type(2) {
-	width:100%;
+	width:1184px;
 	padding-top: 70px;
+	position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 #header nav:nth-of-type(2) > ul > li {
 	float:left; 
@@ -223,7 +238,7 @@ ul {
 	display: inline-block;
     box-sizing: border-box;
 	width:48.33%;
-	position: relative;
+	position: absolute;
 	margin-left: 3%;
 }
 #section-01 #find-store #search h2 {
@@ -351,7 +366,9 @@ ul {
 }
 #section-01 #find-store #quick-menu ul li {
 	display: inline-block;
+	position: relative;
 	width:49%;
+	text-align: center;
 }
 #section-01 #find-store #quick-menu ul li a {
 	text-decoration: none;
@@ -360,10 +377,7 @@ ul {
 }
 #section-01 #find-store #quick-menu ul li a img {
 	position: relative;
-    left: 50%;
-    transform: translateX(-50%);
 }
-
 #section-02 {
 	margin-top: 40px;
     padding: 40px 0;
@@ -403,7 +417,7 @@ ul {
 	height: 2px;
 	left: 50%;
 	transform: translateX(-50%);
-	top: 20px;
+	top: 10px;
 	width:35px;
 }
 #section-02 ul li dd {
@@ -621,9 +635,12 @@ ul {
 
 
 /*mobile*/
-@media(max-width: 1080px) {
+@media(max-width: 1183px) {
 	#headerwrap {
 		height: 73px;
+	}
+	#headerwrap.mobile {
+		height: 140px;
 	}
 	#header {
 		display: none;
@@ -643,7 +660,15 @@ ul {
 		border-bottom: 1px solid #edebeb;
 		transition: all 0.5s;
 	}
+	#mbHeader.mobile {
+		height: 140px;
+		margin-top: 0px;
+		padding: 0;
+	}
 	#mbHeader.active {
+		height: auto;
+	}
+	#mbHeader.mobile.active {
 		height: auto;
 	}
 	#mbHeader nav {
@@ -652,11 +677,20 @@ ul {
 	#mbHeader nav.active {
 		display: block;
 	}
+	#mbHeader.mobile h1 {
+		height: 140px;
+		margin: 0;
+	}
 	#mbHeader h1 a {
 		margin-left: 20px;
 	}
 	#mbHeader h1 img{
 		width:43px;
+	}
+	#mbHeader.mobile h1 a img {
+		width: 110px;
+		position: absolute;
+	    top:12px;
 	}
 	#mbHeader .util {
 		display: inline-block;
@@ -664,18 +698,32 @@ ul {
 	    right: 30px;
 	    top: 20px;
 	}
+	#mbHeader.mobile .util {
+		top: 27px;
+	}
 	#mbHeader .util ul li img {
 		width:30px;
 		cursor: pointer;
+	}
+	#mbHeader.mobile .util img {
+		width:55px;
+	}
+	.mobile nav.active .menu {
+		margin: 0;
 	}
 	#mbHeader nav .menu {
 		margin-top: -14px;
 		margin-bottom: 0;
 	}
+	#mbHeader.mobile nav .menu {
+		margin-top: 0;
+	}
 	#mbHeader nav .menu > li {
 		border-bottom: 1px solid #450808b5;
 	}
-	
+	#mbHeader.mobile nav .menu > li {
+		height: auto;
+	}
 	#mbHeader nav .menu > li > a {
 		display: block;
 		position: relative;
@@ -686,11 +734,18 @@ ul {
 	    font: bold 15px NanumGothic;
 	    color: #fff;
 	}
+	#mbHeader.mobile nav .menu > li > a {
+		height: auto;
+		font-size: 35px;
+		padding:20px 0 20px 25px;
+	}
 	#mbHeader nav .menu > li > a img {
 		width: 20px;
     	position: absolute;
     	right: 18px;
-    	bottom: 12px;
+    	top: 50%;
+    	transform: translateY(-50%);
+    	transition: 0.3s;
 	}
 	#mbHeader nav .menu > li > ul {
 		display: none;
@@ -710,6 +765,10 @@ ul {
 	    font: bold 13px NanumGothic;
 	    color: #fff;
 	}
+	#mbHeader.mobile nav .menu > li > ul li a {
+		padding: 20px 25px 20px 32px;
+	    font: bold 22px NanumGothic;
+	}
 	#section-01 #news {
 		display: block;
 		width:100%;
@@ -720,13 +779,17 @@ ul {
 	#section-01 #find-store {
 		display: block;
 		width:100%;
+		position: relative;
 		margin-left: 0;
 	}
 	#section-01 #find-store #search {
 		padding-bottom: 20px;
 	}
+	#section-01 #find-store #new-store {
+		padding-left: 25px;
+	}
 	#section-01 #find-store #new-store #new-store-slider {
-		height: 320px;
+		height: 340px;
 	}
 	#section-01 #quick-menu h3 {
 		text-align: center;

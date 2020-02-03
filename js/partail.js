@@ -7,7 +7,7 @@ var $firstMenu = $('#header nav ul.menu > li'),
 var $mbHeader = $('#mbHeader'),
 	$mbBtn = $('#mbHeader .util li'),
 	$mbMenu = $('#mbHeader nav'),
-	$mbFirstMenu = $('#mbHeader nav ul.menu > li a'),
+	$mbFirstMenu = $('#mbHeader nav ul.menu > li'),
 	$mbSecondMenu = $('#mbHeader nav ul.menu > li > ul');
 
 	$firstMenu.mouseover(function() {
@@ -55,12 +55,16 @@ var $mbHeader = $('#mbHeader'),
     		color: '#303030'
     	})
     })
+    // $(window).resize(function(){
+    // 	$('#section-01 #find-store #quick-menu ul li a img').css('transform','translateX(-50%)');
+    // });
 // mobile
 	$mbBtn.click(function() {
 		$mbMenu.toggleClass('active');
 		$mbHeader.toggleClass('active');
 	});
 	$mbFirstMenu.click(function(event) {
+		event.preventDefault();
 		var sameMenuClick = false;
 		event.preventDefault();
 		if($(event.target).siblings('ul').hasClass('active')) {
@@ -76,3 +80,10 @@ var $mbHeader = $('#mbHeader'),
 			$(event.target).find('img').attr('src','img/close_tap.png')
 		}
 	})
+	if(jQuery.browser.mobile) {
+		$('#headerwrap').addClass('mobile');
+		$mbHeader.addClass('mobile');
+	} else {
+		$mbHeader.removeClass('mobile');
+		$('#headerwrap').removeClass('mobile');
+	};
